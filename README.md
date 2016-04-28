@@ -31,7 +31,7 @@ If you need to reconfigure your build be sure to run `make distclean` first.
     http://dev.chromium.org/developers/how-tos/install-depot-tools
 
 2.  Create a new directory for checking out the source code.
-    mkdir breakpad && cd breakpad
+    `mkdir breakpad && cd breakpad`
 
 3.  Run the `fetch` tool from depot_tools to download all the source repos.
     `fetch breakpad`
