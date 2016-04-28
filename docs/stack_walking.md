@@ -11,7 +11,7 @@ Typically the stack walking process is initiated by instantiating the
 [MinidumpProcessor]
 (../src/processor/minidump_processor.cc)
 class and calling the [MinidumpProcessor::Process]
-(../src/processor/minidump_processor.cc#61)
+(../src/processor/minidump_processor.cc#L61)
 method, providing it a minidump file to process. To produce a useful stack
 trace, the MinidumpProcessor requires two other objects which are passed in its
 constructor: a [SymbolSupplier]
@@ -27,28 +27,28 @@ be provided on these interactions later.
 
 A number of data streams are extracted from the minidump to begin stack walking:
 the list of threads from the process ([MinidumpThreadList]
-(../src/google_breakpad/processor/minidump.h#335)),
+(../src/google_breakpad/processor/minidump.h#L335)),
 the list of modules loaded in the process ([MinidumpModuleList]
-(../src/google_breakpad/processor/minidump.h#501)),
+(../src/google_breakpad/processor/minidump.h#L501)),
 and information about the exception that caused the process to crash
 ([MinidumpException]
-(../src/google_breakpad/processor/minidump.h#615)).
+(../src/google_breakpad/processor/minidump.h#L615)).
 
 ## Enumerating Threads
 
 For each thread in the thread list ([MinidumpThread]
-(../src/google_breakpad/processor/minidump.h#299)),
+(../src/google_breakpad/processor/minidump.h#L299)),
 the thread memory containing the stack for the thread ([MinidumpMemoryRegion]
-(../src/google_breakpad/processor/minidump.h#236))
+(../src/google_breakpad/processor/minidump.h#L236))
 and the CPU context representing the CPU state of the thread at the time the
 dump was written ([MinidumpContext]
-(../src/google_breakpad/processor/minidump.h#171))
+(../src/google_breakpad/processor/minidump.h#L171))
 are extracted from the minidump. If the thread being processed is the thread
 that produced the exception then a CPU context is obtained from the
 MinidumpException object instead, which represents the CPU state of the thread
 at the point of the exception. A stack walker is then instantiated by calling
 the [Stackwalker::StackwalkerForCPU]
-(../src/google_breakpad/processor/stackwalker.h#77)
+(../src/google_breakpad/processor/stackwalker.h#L77)
 method and passing it the CPU context, the thread memory, the module list, as
 well as the SymbolSupplier and SourceLineResolverInterface. This method selects
 the specific !Stackwalker subclass based on the CPU architecture of the provided
