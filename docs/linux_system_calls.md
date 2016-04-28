@@ -10,7 +10,7 @@ In a nutshell, the problem is that the system call gate function,
 kernel\_vsyscall does not use EBP to point to the frame pointer.
 
 However, the Breakpad processor supports special frames like this via STACK
-lines in the symbol file. If you look in src/client/linux/data you will see
+lines in the symbol file. If you look in [src/client/linux/data](../src/client/linux/data/) you will see
 symbol files for linux-gate.so for both Intel & AMD(the implementation of
 kernel\_vsyscall changes depending on the CPU manufacturer). When processing
 minidumps from Linux 2.6, having these symbol files is necessary for walking the
