@@ -41,7 +41,10 @@ AM_INIT_AUTOMAKE(subdir-objects tar-ustar 1.11.1)
 AM_CONFIG_HEADER(src/config.h)
 AM_MAINTAINER_MODE
 
-AM_PROG_AR
+# For non-POSIX archivers like the one on OS X.
+# Use m4_ifdef to work on older automake (1.11).
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+
 AM_PROG_AS
 AC_PROG_CC
 AM_PROG_CC_C_O
