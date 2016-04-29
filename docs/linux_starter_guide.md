@@ -26,7 +26,7 @@ binary, and set your include paths to include the **src** directory in the
 **google-breakpad** source tree. Next, include the exception handler header:
 
 ```cpp
-#include "client/linux/handler/exception_handler.h"
+#include "google_breakpad/client/linux/handler/exception_handler.h"
 ```
 
 Now you can instantiate an `ExceptionHandler` object. Exception handling is active for the lifetime of the `ExceptionHandler` object, so you should instantiate it as early as possible in your application's startup process, and keep it alive for as close to shutdown as possible. To do anything useful, the `ExceptionHandler` constructor requires a path where it can write minidumps, as well as a callback function to receive information about minidumps that were written:

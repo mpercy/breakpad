@@ -36,7 +36,7 @@
 #include <string>
 #include <vector>
 
-#include "common/linux/dump_symbols.h"
+#include "google_breakpad/common/linux/dump_symbols.h"
 
 using google_breakpad::WriteSymbolFile;
 using google_breakpad::WriteSymbolFileHeader;

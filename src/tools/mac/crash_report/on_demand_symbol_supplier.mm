@@ -37,10 +37,10 @@
 #include "google_breakpad/processor/basic_source_line_resolver.h"
 #include "google_breakpad/processor/minidump.h"
 #include "google_breakpad/processor/system_info.h"
-#include "processor/pathname_stripper.h"
+#include "google_breakpad/processor/pathname_stripper.h"
 
 #include "on_demand_symbol_supplier.h"
-#include "common/mac/dump_syms.h"
+#include "google_breakpad/common/mac/dump_syms.h"
 
 using std::map;
 using std::string;

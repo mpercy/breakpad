@@ -46,9 +46,9 @@
 #include <string>
 #include <vector>
 
-#include "common/byte_cursor.h"
-#include "common/mac/arch_utilities.h"
-#include "common/mac/macho_reader.h"
+#include "google_breakpad/common/byte_cursor.h"
+#include "google_breakpad/common/mac/arch_utilities.h"
+#include "google_breakpad/common/mac/macho_reader.h"
 
 using google_breakpad::ByteBuffer;
 using std::ostringstream;

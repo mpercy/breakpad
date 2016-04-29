@@ -46,9 +46,9 @@
 #include <string>
 #include <vector>
 
-#include "common/linux/memory_mapped_file.h"
-#include "common/minidump_type_helper.h"
-#include "common/scoped_ptr.h"
+#include "google_breakpad/common/linux/memory_mapped_file.h"
+#include "google_breakpad/common/minidump_type_helper.h"
+#include "google_breakpad/common/scoped_ptr.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/common/minidump_format.h"
 #include "third_party/lss/linux_syscall_support.h"

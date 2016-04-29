@@ -40,8 +40,8 @@
 
 #include <string>
 
-#include "common/linux/http_upload.h"
-#include "common/using_std_string.h"
+#include "google_breakpad/common/linux/http_upload.h"
+#include "google_breakpad/common/using_std_string.h"
 
 using google_breakpad::HTTPUpload;
 

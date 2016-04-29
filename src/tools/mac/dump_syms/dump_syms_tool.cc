@@ -39,10 +39,10 @@
 #include <iostream>
 #include <vector>
 
-#include "common/mac/dump_syms.h"
-#include "common/mac/arch_utilities.h"
-#include "common/mac/macho_utilities.h"
-#include "common/scoped_ptr.h"
+#include "google_breakpad/common/mac/dump_syms.h"
+#include "google_breakpad/common/mac/arch_utilities.h"
+#include "google_breakpad/common/mac/macho_utilities.h"
+#include "google_breakpad/common/scoped_ptr.h"
 
 using google_breakpad::DumpSymbols;
 using google_breakpad::Module;

@@ -32,7 +32,7 @@
 #include <string>
 #include <cstdio>
 
-#include "common/solaris/dump_symbols.h"
+#include "google_breakpad/common/solaris/dump_symbols.h"
 
 using namespace google_breakpad;
 

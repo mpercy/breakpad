@@ -37,7 +37,7 @@
 
 #include <string>
 
-#include "common/using_std_string.h"
+#include "google_breakpad/common/using_std_string.h"
 
 namespace google_breakpad {
 

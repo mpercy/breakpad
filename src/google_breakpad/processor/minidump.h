@@ -90,8 +90,8 @@
 #include <string>
 #include <vector>
 
-#include "common/basictypes.h"
-#include "common/using_std_string.h"
+#include "google_breakpad/common/basictypes.h"
+#include "google_breakpad/common/using_std_string.h"
 #include "google_breakpad/processor/code_module.h"
 #include "google_breakpad/processor/code_modules.h"
 #include "google_breakpad/processor/dump_context.h"

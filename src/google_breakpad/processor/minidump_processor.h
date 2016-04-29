@@ -33,7 +33,7 @@
 #include <assert.h>
 #include <string>
 
-#include "common/using_std_string.h"
+#include "google_breakpad/common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/processor/process_result.h"
 

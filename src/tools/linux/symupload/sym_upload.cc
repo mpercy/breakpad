@@ -43,7 +43,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "common/linux/symbol_upload.h"
+#include "google_breakpad/common/linux/symbol_upload.h"
 
 using google_breakpad::sym_upload::Options;
 

@@ -41,8 +41,8 @@
 #include <cstdio>
 
 #include "tools/windows/converter/ms_symbol_server_converter.h"
-#include "common/windows/pdb_source_line_writer.h"
-#include "common/windows/string_utils-inl.h"
+#include "google_breakpad/common/windows/pdb_source_line_writer.h"
+#include "google_breakpad/common/windows/string_utils-inl.h"
 
 // SYMOPT_NO_PROMPTS is not defined in earlier platform SDKs.  Define it
 // in that case, in the event that this code is used with a newer version

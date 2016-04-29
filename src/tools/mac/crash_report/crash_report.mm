@@ -39,7 +39,7 @@
 
 #include <Foundation/Foundation.h>
 
-#include "common/scoped_ptr.h"
+#include "google_breakpad/common/scoped_ptr.h"
 #include "google_breakpad/processor/basic_source_line_resolver.h"
 #include "google_breakpad/processor/call_stack.h"
 #include "google_breakpad/processor/code_module.h"
@@ -48,8 +48,8 @@
 #include "google_breakpad/processor/process_state.h"
 #include "google_breakpad/processor/stack_frame_cpu.h"
 #include "google_breakpad/processor/system_info.h"
-#include "processor/pathname_stripper.h"
-#include "processor/simple_symbol_supplier.h"
+#include "google_breakpad/processor/pathname_stripper.h"
+#include "google_breakpad/processor/simple_symbol_supplier.h"
 
 #include "on_demand_symbol_supplier.h"
 

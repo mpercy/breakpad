@@ -42,12 +42,12 @@
 #include <string>
 #include <vector>
 
-#include "common/scoped_ptr.h"
-#include "common/using_std_string.h"
+#include "google_breakpad/common/scoped_ptr.h"
+#include "google_breakpad/common/using_std_string.h"
 #include "google_breakpad/processor/dump_context.h"
 #include "google_breakpad/processor/memory_region.h"
 #include "google_breakpad/processor/system_info.h"
-#include "processor/basic_code_modules.h"
+#include "google_breakpad/processor/basic_code_modules.h"
 
 namespace google_breakpad {
 

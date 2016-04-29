@@ -29,8 +29,8 @@
 
 #include <stdio.h>
 
-#include "client/linux/handler/exception_handler.h"
-#include "client/linux/handler/minidump_descriptor.h"
+#include "google_breakpad/client/linux/handler/exception_handler.h"
+#include "google_breakpad/client/linux/handler/minidump_descriptor.h"
 
 namespace {
 

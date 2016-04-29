@@ -52,10 +52,10 @@
 #include <string>
 #include <vector>
 
-#include "common/windows/string_utils-inl.h"
+#include "google_breakpad/common/windows/string_utils-inl.h"
 
-#include "common/windows/http_upload.h"
-#include "common/windows/pdb_source_line_writer.h"
+#include "google_breakpad/common/windows/http_upload.h"
+#include "google_breakpad/common/windows/pdb_source_line_writer.h"
 
 using std::string;
 using std::wstring;

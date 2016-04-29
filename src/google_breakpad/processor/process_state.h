@@ -37,7 +37,7 @@
 #include <string>
 #include <vector>
 
-#include "common/using_std_string.h"
+#include "google_breakpad/common/using_std_string.h"
 #include "google_breakpad/common/breakpad_types.h"
 #include "google_breakpad/processor/system_info.h"
 #include "google_breakpad/processor/minidump.h"

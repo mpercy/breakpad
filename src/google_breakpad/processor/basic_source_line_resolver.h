@@ -41,7 +41,7 @@
 #include <map>
 #include <string>
 
-#include "common/using_std_string.h"
+#include "google_breakpad/common/using_std_string.h"
 #include "google_breakpad/processor/source_line_resolver_base.h"
 
 namespace google_breakpad {

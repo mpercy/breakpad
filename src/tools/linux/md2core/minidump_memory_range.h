@@ -37,7 +37,7 @@
 
 #include <string>
 
-#include "common/memory_range.h"
+#include "google_breakpad/common/memory_range.h"
 #include "google_breakpad/common/minidump_format.h"
 
 namespace google_breakpad {

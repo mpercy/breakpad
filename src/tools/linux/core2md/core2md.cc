@@ -31,8 +31,8 @@
 
 #include <stdio.h>
 
-#include "client/linux/minidump_writer/minidump_writer.h"
-#include "client/linux/minidump_writer/linux_core_dumper.h"
+#include "google_breakpad/client/linux/minidump_writer/minidump_writer.h"
+#include "google_breakpad/client/linux/minidump_writer/linux_core_dumper.h"
 
 using google_breakpad::AppMemoryList;
 using google_breakpad::MappingList;
