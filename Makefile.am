@@ -171,7 +171,7 @@ src_google_breakpad_client_linux_libbreakpad_client_a_SOURCES = \
 	src/google_breakpad/client/linux/minidump_writer/linux_ptrace_dumper.cc \
 	src/google_breakpad/client/linux/minidump_writer/minidump_writer.cc \
 	src/google_breakpad/client/minidump_file_writer.cc \
-	src/google_breakpad/common/convert_UTF.c \
+	src/google_breakpad/common/convert_UTF.cc \
 	src/google_breakpad/common/md5.cc \
 	src/google_breakpad/common/string_conversion.cc \
 	src/google_breakpad/common/linux/elf_core_dump.cc \
@@ -1245,7 +1245,7 @@ EXTRA_DIST = \
 	src/google_breakpad/client/windows/sender/crash_report_sender.cc \
 	src/google_breakpad/client/windows/sender/crash_report_sender.h \
 	src/google_breakpad/client/windows/sender/crash_report_sender.vcproj \
-	src/google_breakpad/common/convert_UTF.c \
+	src/google_breakpad/common/convert_UTF.cc \
 	src/google_breakpad/common/convert_UTF.h \
 	src/google_breakpad/common/linux/crc32.cc \
 	src/google_breakpad/common/linux/dump_symbols.cc \

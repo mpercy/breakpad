@@ -60,6 +60,8 @@ See the header file "ConvertUTF.h" for complete documentation.
 #include <stdio.h>
 #endif
 
+namespace google_breakpad {
+
 static const int halfShift  = 10; /* used for shifting by 10 bits */
 
 static const UTF32 halfBase = 0x0010000UL;
@@ -552,3 +554,5 @@ In UTF-8 writing code, the switches on "bytesToWrite" are
 similarly unrolled loops.
 
 --------------------------------------------------------------------- */
+
+} // namespace google_breakpad

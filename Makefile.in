@@ -241,7 +241,8 @@ DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
 	$(am__includecl_HEADERS_DIST) $(am__includeclc_HEADERS_DIST) \
 	$(am__includecldwc_HEADERS_DIST) \
 	$(am__includeclh_HEADERS_DIST) $(am__includeclm_HEADERS_DIST) \
-	$(includegbc_HEADERS) $(includep_HEADERS) $(am__DIST_COMMON)
+	$(includegbc_HEADERS) $(am__includelss_HEADERS_DIST) \
+	$(includep_HEADERS) $(am__DIST_COMMON)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
@@ -280,7 +281,8 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
 	"$(DESTDIR)$(includecdir)" "$(DESTDIR)$(includecldir)" \
 	"$(DESTDIR)$(includeclcdir)" "$(DESTDIR)$(includecldwcdir)" \
 	"$(DESTDIR)$(includeclhdir)" "$(DESTDIR)$(includeclmdir)" \
-	"$(DESTDIR)$(includegbcdir)" "$(DESTDIR)$(includepdir)"
+	"$(DESTDIR)$(includegbcdir)" "$(DESTDIR)$(includelssdir)" \
+	"$(DESTDIR)$(includepdir)"
 LIBRARIES = $(lib_LIBRARIES) $(noinst_LIBRARIES)
 ARFLAGS = cru
 AM_V_AR = $(am__v_AR_@AM_V@)
@@ -303,7 +305,7 @@ am__src_google_breakpad_client_linux_libbreakpad_client_a_SOURCES_DIST = src/goo
 	src/google_breakpad/client/linux/minidump_writer/linux_ptrace_dumper.cc \
 	src/google_breakpad/client/linux/minidump_writer/minidump_writer.cc \
 	src/google_breakpad/client/minidump_file_writer.cc \
-	src/google_breakpad/common/convert_UTF.c \
+	src/google_breakpad/common/convert_UTF.cc \
 	src/google_breakpad/common/md5.cc \
 	src/google_breakpad/common/string_conversion.cc \
 	src/google_breakpad/common/linux/elf_core_dump.cc \
@@ -1595,10 +1597,13 @@ am__includecldwc_HEADERS_DIST = $(top_srcdir)/src/google_breakpad/client/linux/d
 am__includeclh_HEADERS_DIST =  \
 	$(top_srcdir)/src/google_breakpad/client/linux/handler/*.h
 am__includeclm_HEADERS_DIST = $(top_srcdir)/src/google_breakpad/client/linux/minidump_writer/*.h
+am__includelss_HEADERS_DIST =  \
+	$(top_srcdir)/src/google_breakpad/third_party/lss/*.h
 HEADERS = $(includec_HEADERS) $(includecl_HEADERS) \
 	$(includeclc_HEADERS) $(includecldwc_HEADERS) \
 	$(includeclh_HEADERS) $(includeclm_HEADERS) \
-	$(includegbc_HEADERS) $(includep_HEADERS)
+	$(includegbc_HEADERS) $(includelss_HEADERS) \
+	$(includep_HEADERS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
@@ -1970,14 +1975,13 @@ dist_doc_DATA = \
 @LINUX_HOST_TRUE@includeclm_HEADERS = $(top_srcdir)/src/google_breakpad/client/linux/minidump_writer/*.h
 @LINUX_HOST_TRUE@includeclcdir = $(includedir)/google_breakpad/client/linux/crash_generation
 @LINUX_HOST_TRUE@includeclc_HEADERS = $(top_srcdir)/src/google_breakpad/client/linux/crash_generation/*.h
-
-#includelssdir = $(includedir)/third_party/lss
-#includelss_HEADERS = $(top_srcdir)/src/third_party/lss/*.h
-@LINUX_HOST_TRUE@includecldir = $(includedir)/common/linux
+@LINUX_HOST_TRUE@includelssdir = $(includedir)/google_breakpad/third_party/lss
+@LINUX_HOST_TRUE@includelss_HEADERS = $(top_srcdir)/src/google_breakpad/third_party/lss/*.h
+@LINUX_HOST_TRUE@includecldir = $(includedir)/google_breakpad/common/linux
 @LINUX_HOST_TRUE@includecl_HEADERS = $(top_srcdir)/src/google_breakpad/common/linux/*.h
 includegbcdir = $(includedir)/google_breakpad/common
 includegbc_HEADERS = $(top_srcdir)/src/google_breakpad/common/*.h
-includecdir = $(includedir)/common
+includecdir = $(includedir)/google_breakpad/common
 includec_HEADERS = $(top_srcdir)/src/google_breakpad/common/*.h
 includepdir = $(includedir)/google_breakpad/processor
 includep_HEADERS = $(top_srcdir)/src/google_breakpad/processor/*.h
@@ -2019,7 +2023,7 @@ CLEANFILES = $(am__append_13)
 @LINUX_HOST_TRUE@	src/google_breakpad/client/linux/minidump_writer/linux_ptrace_dumper.cc \
 @LINUX_HOST_TRUE@	src/google_breakpad/client/linux/minidump_writer/minidump_writer.cc \
 @LINUX_HOST_TRUE@	src/google_breakpad/client/minidump_file_writer.cc \
-@LINUX_HOST_TRUE@	src/google_breakpad/common/convert_UTF.c \
+@LINUX_HOST_TRUE@	src/google_breakpad/common/convert_UTF.cc \
 @LINUX_HOST_TRUE@	src/google_breakpad/common/md5.cc \
 @LINUX_HOST_TRUE@	src/google_breakpad/common/string_conversion.cc \
 @LINUX_HOST_TRUE@	src/google_breakpad/common/linux/elf_core_dump.cc \
@@ -3021,7 +3025,7 @@ EXTRA_DIST = \
 	src/google_breakpad/client/windows/sender/crash_report_sender.cc \
 	src/google_breakpad/client/windows/sender/crash_report_sender.h \
 	src/google_breakpad/client/windows/sender/crash_report_sender.vcproj \
-	src/google_breakpad/common/convert_UTF.c \
+	src/google_breakpad/common/convert_UTF.cc \
 	src/google_breakpad/common/convert_UTF.h \
 	src/google_breakpad/common/linux/crc32.cc \
 	src/google_breakpad/common/linux/dump_symbols.cc \
@@ -6999,6 +7003,27 @@ uninstall-includegbcHEADERS:
 	@list='$(includegbc_HEADERS)'; test -n "$(includegbcdir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
 	dir='$(DESTDIR)$(includegbcdir)'; $(am__uninstall_files_from_dir)
+install-includelssHEADERS: $(includelss_HEADERS)
+	@$(NORMAL_INSTALL)
+	@list='$(includelss_HEADERS)'; test -n "$(includelssdir)" || list=; \
+	if test -n "$$list"; then \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(includelssdir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(includelssdir)" || exit 1; \
+	fi; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(includelssdir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(includelssdir)" || exit $$?; \
+	done
+
+uninstall-includelssHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(includelss_HEADERS)'; test -n "$(includelssdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	dir='$(DESTDIR)$(includelssdir)'; $(am__uninstall_files_from_dir)
 install-includepHEADERS: $(includep_HEADERS)
 	@$(NORMAL_INSTALL)
 	@list='$(includep_HEADERS)'; test -n "$(includepdir)" || list=; \
@@ -7673,7 +7698,7 @@ check: check-am
 all-am: Makefile $(LIBRARIES) $(PROGRAMS) $(SCRIPTS) $(DATA) \
 		$(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(docdir)" "$(DESTDIR)$(pkgconfigdir)" "$(DESTDIR)$(includecdir)" "$(DESTDIR)$(includecldir)" "$(DESTDIR)$(includeclcdir)" "$(DESTDIR)$(includecldwcdir)" "$(DESTDIR)$(includeclhdir)" "$(DESTDIR)$(includeclmdir)" "$(DESTDIR)$(includegbcdir)" "$(DESTDIR)$(includepdir)"; do \
+	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(docdir)" "$(DESTDIR)$(pkgconfigdir)" "$(DESTDIR)$(includecdir)" "$(DESTDIR)$(includecldir)" "$(DESTDIR)$(includeclcdir)" "$(DESTDIR)$(includecldwcdir)" "$(DESTDIR)$(includeclhdir)" "$(DESTDIR)$(includeclmdir)" "$(DESTDIR)$(includegbcdir)" "$(DESTDIR)$(includelssdir)" "$(DESTDIR)$(includepdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -7788,7 +7813,8 @@ install-data-am: install-dist_docDATA install-includecHEADERS \
 	install-includeclHEADERS install-includeclcHEADERS \
 	install-includecldwcHEADERS install-includeclhHEADERS \
 	install-includeclmHEADERS install-includegbcHEADERS \
-	install-includepHEADERS install-pkgconfigDATA
+	install-includelssHEADERS install-includepHEADERS \
+	install-pkgconfigDATA
 
 install-dvi: install-dvi-am
 
@@ -7840,8 +7866,9 @@ uninstall-am: uninstall-binPROGRAMS uninstall-dist_docDATA \
 	uninstall-includecHEADERS uninstall-includeclHEADERS \
 	uninstall-includeclcHEADERS uninstall-includecldwcHEADERS \
 	uninstall-includeclhHEADERS uninstall-includeclmHEADERS \
-	uninstall-includegbcHEADERS uninstall-includepHEADERS \
-	uninstall-libLIBRARIES uninstall-pkgconfigDATA
+	uninstall-includegbcHEADERS uninstall-includelssHEADERS \
+	uninstall-includepHEADERS uninstall-libLIBRARIES \
+	uninstall-pkgconfigDATA
 
 .MAKE: check-am install-am install-strip
 
@@ -7861,19 +7888,20 @@ uninstall-am: uninstall-binPROGRAMS uninstall-dist_docDATA \
 	install-includeclHEADERS install-includeclcHEADERS \
 	install-includecldwcHEADERS install-includeclhHEADERS \
 	install-includeclmHEADERS install-includegbcHEADERS \
-	install-includepHEADERS install-info install-info-am \
-	install-libLIBRARIES install-man install-pdf install-pdf-am \
-	install-pkgconfigDATA install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-local pdf pdf-am ps ps-am \
-	recheck tags tags-am uninstall uninstall-am \
+	install-includelssHEADERS install-includepHEADERS install-info \
+	install-info-am install-libLIBRARIES install-man install-pdf \
+	install-pdf-am install-pkgconfigDATA install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-local pdf \
+	pdf-am ps ps-am recheck tags tags-am uninstall uninstall-am \
 	uninstall-binPROGRAMS uninstall-dist_docDATA \
 	uninstall-includecHEADERS uninstall-includeclHEADERS \
 	uninstall-includeclcHEADERS uninstall-includecldwcHEADERS \
 	uninstall-includeclhHEADERS uninstall-includeclmHEADERS \
-	uninstall-includegbcHEADERS uninstall-includepHEADERS \
-	uninstall-libLIBRARIES uninstall-pkgconfigDATA
+	uninstall-includegbcHEADERS uninstall-includelssHEADERS \
+	uninstall-includepHEADERS uninstall-libLIBRARIES \
+	uninstall-pkgconfigDATA
 
 .PRECIOUS: Makefile
 

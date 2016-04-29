@@ -39,6 +39,8 @@
 #ifndef COMMON_CONVERT_UTF_H_
 #define COMMON_CONVERT_UTF_H_
 
+namespace google_breakpad {
+
 /* ---------------------------------------------------------------------
 
 Conversions between UTF32, UTF-16, and UTF-8.  Header file.
@@ -130,11 +132,6 @@ typedef enum {
 	lenientConversion
 } ConversionFlags;
 
-/* This is for C++ and does no harm in C */
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 ConversionResult ConvertUTF8toUTF16 (const UTF8** sourceStart, const UTF8* sourceEnd,
                                      UTF16** targetStart, UTF16* targetEnd, ConversionFlags flags);
 
@@ -155,10 +152,8 @@ ConversionResult ConvertUTF32toUTF16 (const UTF32** sourceStart, const UTF32* so
 
 Boolean isLegalUTF8Sequence(const UTF8 *source, const UTF8 *sourceEnd);
 
-#ifdef __cplusplus
-}
-#endif
-
 /* --------------------------------------------------------------------- */
+
+} // namespace google_breakpad
 
 #endif  // COMMON_CONVERT_UTF_H_
