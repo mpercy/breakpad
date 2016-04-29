@@ -92,8 +92,8 @@ includeclm_HEADERS = $(top_srcdir)/src/google_breakpad/client/linux/minidump_wri
 includeclcdir = $(includedir)/google_breakpad/client/linux/crash_generation
 includeclc_HEADERS = $(top_srcdir)/src/google_breakpad/client/linux/crash_generation/*.h
 
-includelssdir = $(includedir)/lss
-includelss_HEADERS = $(top_srcdir)/src/third_party/lss/*.h
+includelssdir = $(includedir)/google_breakpad/third_party/lss
+includelss_HEADERS = $(top_srcdir)/src/google_breakpad/third_party/lss/*.h
 
 includecldir = $(includedir)/google_breakpad/common/linux
 includecl_HEADERS = $(top_srcdir)/src/google_breakpad/common/linux/*.h
