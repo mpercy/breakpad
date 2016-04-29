@@ -2,6 +2,15 @@
 
 This document is an overview of using the Breakpad client libraries on Linux.
 
+## Pulling Linux syscall support into third\_party
+
+When building from the Git repository, `lss` must be manually added to
+thirdparty before building, like so:
+
+```
+svn checkout http://linux-syscall-support.googlecode.com/svn/trunk/lss/ src/third_party/lss
+```
+
 ## Building the Breakpad libraries
 
 Breakpad provides an Autotools build system that will build both the Linux
