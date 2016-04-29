@@ -45,7 +45,7 @@
 #include "google_breakpad/common/linux/elfutils.h"
 #include "google_breakpad/common/linux/linux_libc_support.h"
 #include "google_breakpad/common/linux/memory_mapped_file.h"
-#include "third_party/lss/linux_syscall_support.h"
+#include "google_breakpad/third_party/lss/linux_syscall_support.h"
 
 using std::string;
 

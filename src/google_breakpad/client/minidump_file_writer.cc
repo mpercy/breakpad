@@ -41,7 +41,7 @@
 #include "google_breakpad/common/linux/linux_libc_support.h"
 #include "google_breakpad/common/string_conversion.h"
 #if defined(__linux__) && __linux__
-#include "third_party/lss/linux_syscall_support.h"
+#include "google_breakpad/third_party/lss/linux_syscall_support.h"
 #endif
 
 #if defined(__ANDROID__)

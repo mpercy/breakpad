@@ -39,7 +39,7 @@
 #include <unistd.h>
 
 #include "google_breakpad/common/scoped_ptr.h"
-#include "third_party/lss/linux_syscall_support.h"
+#include "google_breakpad/third_party/lss/linux_syscall_support.h"
 
 #if defined(__ARM_EABI__)
 #define TID_PTR_REGISTER "r3"

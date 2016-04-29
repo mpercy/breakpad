@@ -46,7 +46,7 @@
 #include <string>
 
 #include "google_breakpad/client/linux/handler/exception_handler.h"
-#include "third_party/lss/linux_syscall_support.h"
+#include "google_breakpad/third_party/lss/linux_syscall_support.h"
 
 namespace {
 

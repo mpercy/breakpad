@@ -49,7 +49,7 @@
 #include "google_breakpad/common/linux/linux_libc_support.h"
 #include "google_breakpad/common/tests/auto_tempdir.h"
 #include "google_breakpad/common/using_std_string.h"
-#include "third_party/lss/linux_syscall_support.h"
+#include "google_breakpad/third_party/lss/linux_syscall_support.h"
 #include "google_breakpad/processor/minidump.h"
 
 using namespace google_breakpad;

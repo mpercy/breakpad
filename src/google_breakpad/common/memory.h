@@ -48,7 +48,7 @@
 #define sys_munmap munmap
 #define MAP_ANONYMOUS MAP_ANON
 #else
-#include "third_party/lss/linux_syscall_support.h"
+#include "google_breakpad/third_party/lss/linux_syscall_support.h"
 #endif
 
 namespace google_breakpad {

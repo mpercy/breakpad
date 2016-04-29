@@ -95,7 +95,7 @@
 #include "google_breakpad/client/linux/minidump_writer/linux_dumper.h"
 #include "google_breakpad/client/linux/minidump_writer/minidump_writer.h"
 #include "google_breakpad/common/linux/eintr_wrapper.h"
-#include "third_party/lss/linux_syscall_support.h"
+#include "google_breakpad/third_party/lss/linux_syscall_support.h"
 
 #if defined(__ANDROID__)
 #include "linux/sched.h"

@@ -77,7 +77,7 @@
 #include "google_breakpad/common/linux/linux_libc_support.h"
 #include "google_breakpad/common/minidump_type_helper.h"
 #include "google_breakpad/common/minidump_format.h"
-#include "third_party/lss/linux_syscall_support.h"
+#include "google_breakpad/third_party/lss/linux_syscall_support.h"
 
 namespace {
 

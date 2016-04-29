@@ -50,7 +50,7 @@
 #include "google_breakpad/common/linux/linux_libc_support.h"
 #include "google_breakpad/common/linux/memory_mapped_file.h"
 #include "google_breakpad/common/linux/safe_readlink.h"
-#include "third_party/lss/linux_syscall_support.h"
+#include "google_breakpad/third_party/lss/linux_syscall_support.h"
 
 #if defined(__ANDROID__)
 
