@@ -8,7 +8,7 @@ When building from the Git repository, `lss` must be manually added to
 thirdparty before building, like so:
 
 ```
-svn checkout http://linux-syscall-support.googlecode.com/svn/trunk/lss/ src/third_party/lss
+git clone https://chromium.googlesource.com/linux-syscall-support src/third_party/lss
 ```
 
 ## Building the Breakpad libraries
@@ -50,42 +50,38 @@ int main(int argc, char* argv[]) {
 
 Compiling and running this example should produce a minidump file in /tmp, and
 it should print the minidump filename before exiting. You can read more about
-the other parameters to the `ExceptionHandler` constructor [in the exception_handler.h source file][1].
-
-[1]: https://chromium.googlesource.com/breakpad/breakpad/+/master/src/client/linux/handler/exception_handler.h
+the other parameters to the `ExceptionHandler` constructor in
+[src/client/linux/handler/exception_handler.h](../src/client/linux/handler/exception_handler.h).
 
 **Note**: You should do as little work as possible in the callback function.
 Your application is in an unsafe state. It may not be safe to allocate memory or
 call functions from other shared libraries. The safest thing to do is `fork` and
 `exec` a new process to do any work you need to do. If you must do some work in
-the callback, the Breakpad source contains [some simple reimplementations of libc functions][2], to avoid calling directly into
-libc, as well as [a header file for making Linux system calls][3] (in **src/third\_party/lss**) to avoid calling into other shared libraries.
-
-[2]: https://chromium.googlesource.com/breakpad/breakpad/+/master/src/common/linux/linux_libc_support.h
-[3]: https://chromium.googlesource.com/linux-syscall-support/+/master
+the callback, the Breakpad source contains [some simple reimplementations of
+libc functions](../src/common/linux/linux_libc_support.h), to avoid calling
+directly into libc, as well as [a header file for making Linux system
+calls](https://chromium.googlesource.com/linux-syscall-support/+/master/linux_syscall_support.h)
+(in **src/third\_party/lss**) to avoid calling into other shared libraries.
 
 ## Sending the minidump file
 
 In a real application, you would want to handle the minidump in some way, likely
-by sending it to a server for analysis. The Breakpad source tree contains [some
-HTTP upload source][4] that you might find useful, as well as [a minidump upload tool][5].
-
-[4]: https://chromium.googlesource.com/breakpad/breakpad/+/master/src/common/linux/http_upload.h
-[5]: https://chromium.googlesource.com/breakpad/breakpad/+/master/src/tools/linux/symupload/minidump_upload.cc
+by sending it to a server for analysis. The Breakpad source tree contains
+[some HTTP upload source](../src/common/linux/http_upload.h)
+that you might find useful, as well as
+[a minidump upload tool](../src/tools/linux/symupload/minidump_upload.cc).
 
 ## Producing symbols for your application
 
 To produce useful stack traces, Breakpad requires you to convert the debugging
-symbols in your binaries to [text-format symbol files][6]. First, ensure that you've compiled your binaries with `-g` to
+symbols in your binaries to [text-format symbol files](symbol_files.md). First, ensure that you've compiled your binaries with `-g` to
 include debugging symbols. Next, compile the `dump_syms` tool by running
 `configure && make` in the Breakpad source directory. Next, run `dump_syms` on
 your binaries to produce the text-format symbols. For example, if your main
 binary was named `test`:
 
-[6]: https://chromium.googlesource.com/breakpad/breakpad/+/master/docs/symbol_files.md
-
 ```
-$ google-breakpad/src/tools/linux/dump_syms/dump_syms ./test > test.sym
+$ ./src/tools/linux/dump_syms/dump_syms ./test > test.sym
 ```
 
 In order to use these symbols with the `minidump_stackwalk` tool, you will need
@@ -94,14 +90,14 @@ file contains the information you need to produce this directory structure, for
 example (your output will vary):
 
 ```
-$ head -n1 test.sym MODULE Linux x86_64 6EDC6ACDB282125843FD59DA9C81BD830 test
+$ head -n1 test.sym
+MODULE Linux x86_64 6EDC6ACDB282125843FD59DA9C81BD830 test
 $ mkdir -p ./symbols/test/6EDC6ACDB282125843FD59DA9C81BD830
 $ mv test.sym ./symbols/test/6EDC6ACDB282125843FD59DA9C81BD830
 ```
 
-You may also find the [symbolstore.py][7] script in the Mozilla repository useful, as it encapsulates these steps.
-
-[7]: https://dxr.mozilla.org/mozilla-central/source/toolkit/crashreporter/tools/symbolstore.py
+You may also find the [symbolstore.py](https://dxr.mozilla.org/mozilla-central/source/toolkit/crashreporter/tools/symbolstore.py)
+script in the Mozilla repository useful, as it encapsulates these steps.
 
 ## Processing the minidump to produce a stack trace
 
@@ -112,7 +108,7 @@ the Breakpad source using the directions above. Simply pass it the minidump and
 the symbol path as commandline parameters:
 
 ```
-$ google-breakpad/src/processor/minidump_stackwalk minidump.dmp ./symbols
+$ ./src/processor/minidump_stackwalk minidump.dmp ./symbols
 ```
 
 It produces verbose output on stderr, and the stacktrace on stdout, so you may
