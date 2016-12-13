@@ -1,14 +1,19 @@
 #!/bin/bash -e
 ####################################
 
-VERSION=snapshot
+REVISION=HEAD
+VERSION=$(git rev-parse $REVISION)
 STAGING=staging
+NAME=breakpad-$VERSION
+PREFIX=$STAGING/$NAME
+FILENAME="$NAME.tar.gz"
+
 rm -rf "$STAGING"
-git archive --format=tar --prefix=breakpad-$VERSION/ HEAD | (mkdir -p "$STAGING" && cd "$STAGING" && tar xf -)
+git archive --format=tar --prefix=$PREFIX/ $REVISION | tar xf -
+git archive --format=tar --prefix=$PREFIX/src/google_breakpad/third_party/lss --remote=https://chromium.googlesource.com/linux-syscall-support | tar xf -
+
 pushd "$STAGING"
-git clone https://chromium.googlesource.com/linux-syscall-support breakpad-$VERSION/src/google_breakpad/third_party/lss
-FILE="breakpad-$VERSION.tar.gz"
-tar czvf "$FILE" breakpad-$VERSION/
+tar czvf "$FILENAME" "$NAME/"
 mv "$FILE" ..
 popd
 echo "Archive created at $(pwd)/$FILE"
